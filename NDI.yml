@@ -11,9 +11,17 @@ GENERATOR:
     SafeStrings: true
   FlagGroups:
     - name: LDFLAGS
+      traits: ["linux"]
       flags:
         - -L/usr/local/lib
-        - -lndi.4
+        - -lndi
+    - name: LDFLAGS
+      traits: ["darwin"]
+      flags:
+        - -Wl,-rpath,/Library/NDI\ SDK\ for\ Apple/lib/macOS
+        - -L/Library/NDI\ SDK\ for\ Apple/lib/macOS
+        - -lndi
+
 
 PARSER:
   IncludePaths:
@@ -21,9 +29,10 @@ PARSER:
     - /usr/local/include
     - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
     - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/
-    - /Library/NDI SDK for Apple/include
+    - /Library/NDI\ SDK\ for\ Apple/include
   SourcesPaths:
     - include/Processing.NDI.Lib.h
+  Arch: aarch64
 
 TRANSLATOR:
   ConstCharIsString: true

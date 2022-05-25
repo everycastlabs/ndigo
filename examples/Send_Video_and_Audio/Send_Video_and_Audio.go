@@ -1,11 +1,12 @@
 package main
 
 import (
-	"../.."
 	"fmt"
 	"math/rand"
 	"time"
 	"unsafe"
+
+	"../../NDI"
 )
 
 func main() {
@@ -16,9 +17,9 @@ func main() {
 	sender := NDI.SendCreate(&NDI.SendCreateT{
 		PNdiName: "Video and Audio",
 	})
-	if sender == nil {
-		panic("unable to create sender")
-	}
+	// if sender == nil {
+	// 	panic("unable to create sender")
+	// }
 
 	// We are going to create a 1920x1080 interlaced frame at 29.97Hz.
 	videoData := make([]byte, 1920*1080*2)
