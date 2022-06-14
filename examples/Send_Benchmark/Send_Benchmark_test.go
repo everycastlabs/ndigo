@@ -1,8 +1,9 @@
 package main
 
 import (
-	"../.."
 	"testing"
+
+	NDI "github.com/broadcastervc/ndigo"
 )
 
 func BenchmarkSendVideoFrame(b *testing.B) {

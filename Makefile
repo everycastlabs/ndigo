@@ -1,9 +1,9 @@
 all:
 	/Users/danjenkins/go/bin/c-for-go ndi.yml
-	mv NDI/* .
-	rm -rf NDI
-	go mod init NDI
-	# go mod tidy
+	mv github.com/broadcastervc/ndigo/* .
+	rm -rf github.com
+	go mod init github.com/broadcastervc/ndigo
+	go mod tidy
 
 clean:
 	rm -f cgo_helpers.go cgo_helpers.h cgo_helpers.c

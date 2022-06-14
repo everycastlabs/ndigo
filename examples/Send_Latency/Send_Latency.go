@@ -1,10 +1,11 @@
 package main
 
 import (
-	"../.."
 	"fmt"
 	"strings"
 	"time"
+
+	NDI "github.com/broadcastervc/ndigo"
 )
 
 var latencies = make([]float32, 0, 100)

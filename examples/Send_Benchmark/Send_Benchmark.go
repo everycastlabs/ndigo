@@ -1,11 +1,12 @@
 package main
 
 import (
-	"../.."
 	"fmt"
 	"math"
 	"runtime/debug"
 	"time"
+
+	NDI "github.com/broadcastervc/ndigo"
 )
 
 import "C"

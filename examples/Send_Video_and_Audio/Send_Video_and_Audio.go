@@ -6,7 +6,7 @@ import (
 	"time"
 	"unsafe"
 
-	"../../NDI"
+	NDI "github.com/broadcastervc/ndigo"
 )
 
 func main() {
