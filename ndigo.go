@@ -1121,17 +1121,12 @@ func V2Load() *V2 {
 	return __v
 }
 
-type SourceType2 C.NDIlib_source_t
-
-func (t SourceType2) Name() string {
-	return C.GoString(t.p_ndi_name)
+type SourceType2 struct {
+	Name string
+	URLAddress string
 }
 
-func (t SourceType2) URLAddress() string {
-	return C.GoString(*(**C.char)(unsafe.Pointer(&t.anon0)))
-}
-
-func FindGetCurrentSources2(instance FindInstanceType) []*SourceType2 {
+func FindGetCurrentSources2(instance FindInstanceType) []*SourceInfoType {
 	var pNoSources C.uint32_t
 	pSources := C.NDIlib_find_get_current_sources(C.NDIlib_find_instance_t(instance), &pNoSources)
 	if pNoSources == 0 {
@@ -1140,8 +1135,12 @@ func FindGetCurrentSources2(instance FindInstanceType) []*SourceType2 {
 	sources := (*[1 << 28]C.NDIlib_source_t)(unsafe.Pointer(pSources))[:pNoSources:pNoSources]
 	result := make([]*SourceType2, pNoSources)
 	for i, source := range sources {
-		result[i] = (*SourceType2)(&source)
+		result[i] = &SourceType2{
+			Name:  C.GoString(source.p_ndi_name),
+			URLAddress: C.GoString(*(**C.char)(unsafe.Pointer(&source.anon0))),
+		}
 	}
+
 	return result
 }
 
