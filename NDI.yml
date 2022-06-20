@@ -43,10 +43,14 @@ TRANSLATOR:
   ConstUCharIsString: false
   ConstRules:
     defines: eval
+    enum: eval
   Rules:
+    type:
+      - { action: replace, from: "_e$" }
+      - { action: replace, from: "_t$", to: "Type" }
     global:
-      - { action: accept, from: "^NDIlib_" }
       - { action: replace, from: "^NDIlib_" }
+      - { action: accept, from: "^NDIlib_" }
       - { transform: export }
     #    const:
     #      - {action: accept, from: "^OV_"}
@@ -56,7 +60,7 @@ TRANSLATOR:
     private:
       - { transform: unexport }
     post-global:
-      - { transform: export }
+      - { action: replace, from: _$ }
       - { load: snakecase }
   PtrTips:
     struct:
@@ -72,3 +76,4 @@ TRANSLATOR:
     function:
       # this covers all other cases
       - { target: ^NDIlib, tips: [ sref,sref,sref,sref,sref,sref,sref,sref ] }
+
