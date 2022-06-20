@@ -1126,7 +1126,7 @@ type SourceType2 struct {
 	URLAddress string
 }
 
-func FindGetCurrentSources2(instance FindInstanceType) []*SourceInfoType {
+func FindGetCurrentSources2(instance FindInstanceType) []*SourceType2 {
 	var pNoSources C.uint32_t
 	pSources := C.NDIlib_find_get_current_sources(C.NDIlib_find_instance_t(instance), &pNoSources)
 	if pNoSources == 0 {
