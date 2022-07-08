@@ -1,7 +1,6 @@
 all:
 	/Users/danjenkins/go/bin/c-for-go ndi.yml
 	mv github.com/broadcastervc/ndigo/* .
-	cat add.txt >> ndigo.go
 	rm -rf github.com
 	go mod init github.com/broadcastervc/ndigo
 	go mod tidy
