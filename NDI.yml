@@ -24,7 +24,7 @@ GENERATOR:
     - name: LDFLAGS
       traits: ["windows"]
       flags:
-        - -lProcessing.NDI.Lib.x64.dll
+        - -lProcessing.NDI.Lib.x64
 
 
 PARSER:
