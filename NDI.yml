@@ -24,7 +24,7 @@ GENERATOR:
     - name: LDFLAGS
       traits: ["windows"]
       flags:
-        - -L'C:\Program/ Files\NDI\NDI 5 Runtime\v5'
+        - -LC:\Program^ Files\NDI\NDI^ 5^ Runtime\v5
         - -lProcessing.NDI.Lib.x64
 
 
