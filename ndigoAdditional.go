@@ -1,6 +1,7 @@
 package ndigo
 
 /*
+#cgo CFLAGS: -Wno-deprecated-declarations
 #cgo linux LDFLAGS: -L/usr/local/lib -lndi
 #cgo darwin LDFLAGS: -Wl,-rpath,/Library/NDI\ SDK\ for\ Apple/lib/macOS -L/Library/NDI\ SDK\ for\ Apple/lib/macOS -lndi
 #cgo windows LDFLAGS: -LC:/Program\ Files/NDI/NDI\ 5\ Runtime/v5 -lProcessing.NDI.Lib.x64

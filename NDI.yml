@@ -10,6 +10,9 @@ GENERATOR:
   Options:
     SafeStrings: true
   FlagGroups:
+    - name: CFLAGS
+      flags:
+        - -Wno-deprecated-declarations
     - name: LDFLAGS
       traits: ["linux"]
       flags:
