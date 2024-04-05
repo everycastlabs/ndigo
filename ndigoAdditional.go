@@ -141,6 +141,10 @@ func (t AudioFrameV3Type2) SampleRate() int {
 	return int(t.sample_rate)
 }
 
+func (t AudioFrameV3Type2) FrameFourCC() FourCCAudioType {
+	return FourCCAudioType(t.FourCC)
+}
+
 func (t AudioFrameV3Type2) ChannelStrideInBytesOrDataSizeInBytes() int {
 
 	//if t.FourCC is not compressed then its channel stride...
@@ -153,9 +157,9 @@ func (t AudioFrameV3Type2) ChannelStrideInBytesOrDataSizeInBytes() int {
 func (t AudioFrameV3Type2) Data() []byte {
 	//return []byte(C.GoString((*C.char)(unsafe.Pointer(t.p_data))))
 	// samples := t.NoSamples()
-	channels := t.NoChannels()
-	channelStride := t.ChannelStrideInBytesOrDataSizeInBytes()
-	size := (channelStride * channels)
+	// channels := t.NoChannels()
+	channelStride := *(*C.int)(unsafe.Pointer(&t.anon0[0]))
+	size := (channelStride * t.no_channels)
 	// log.Printf("channelStride: %d, samples: %d, channels: %d, size: %d", channelStride, samples, channels, size)
 
 	return C.GoBytes(unsafe.Pointer(t.p_data), C.int(size))
